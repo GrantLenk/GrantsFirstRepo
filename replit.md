@@ -98,3 +98,7 @@ The application is designed to be deployed on Replit with PostgreSQL database pr
   - Updated admin panel labels and messages
   - Modified video player waiting state to reference advertisements
   - Updated database schema comments to reflect ad focus
+  - Added revenue distribution pie chart showing ad payment breakdown
+  - Added adPayment field to database schema with default value of $1000
+  - Created RevenuePieChart component showing distribution: 75% user rewards, 15% platform fee, 10% operating costs
+  - Updated admin panel to include ad payment amount input field

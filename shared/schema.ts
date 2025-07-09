@@ -8,6 +8,7 @@ export const broadcasts = pgTable("broadcasts", {
   broadcastTime: text("broadcast_time").notNull(), // time to display ad (HH:MM format)
   videoTitle: text("video_title").notNull(), // title of the advertisement
   date: text("date").notNull(), // date for the ad (YYYY-MM-DD format)
+  adPayment: text("ad_payment").notNull().default("1000"), // advertiser payment amount
 });
 
 export const insertBroadcastSchema = createInsertSchema(broadcasts).omit({

@@ -18,12 +18,13 @@ export default function AdminPanel({ broadcast, onClose }: AdminPanelProps) {
   const [videoUrl, setVideoUrl] = useState(broadcast?.videoUrl || "");
   const [broadcastTime, setBroadcastTime] = useState(broadcast?.broadcastTime || "15:00");
   const [videoTitle, setVideoTitle] = useState(broadcast?.videoTitle || "");
+  const [adPayment, setAdPayment] = useState(broadcast?.adPayment || "1000");
   
   const { toast } = useToast();
   const queryClient = useQueryClient();
 
   const saveBroadcastMutation = useMutation({
-    mutationFn: async (data: { videoUrl: string; broadcastTime: string; videoTitle: string }) => {
+    mutationFn: async (data: { videoUrl: string; broadcastTime: string; videoTitle: string; adPayment: string }) => {
       const response = await apiRequest("POST", "/api/broadcast", data);
       return response.json();
     },
@@ -45,7 +46,7 @@ export default function AdminPanel({ broadcast, onClose }: AdminPanelProps) {
   });
 
   const handleSave = () => {
-    if (!videoUrl || !broadcastTime || !videoTitle) {
+    if (!videoUrl || !broadcastTime || !videoTitle || !adPayment) {
       toast({
         title: "Error",
         description: "Please fill in all fields",
@@ -65,7 +66,17 @@ export default function AdminPanel({ broadcast, onClose }: AdminPanelProps) {
       return;
     }
 
-    saveBroadcastMutation.mutate({ videoUrl, broadcastTime, videoTitle });
+    const paymentAmount = parseFloat(adPayment);
+    if (isNaN(paymentAmount) || paymentAmount <= 0) {
+      toast({
+        title: "Error",
+        description: "Please enter a valid payment amount",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    saveBroadcastMutation.mutate({ videoUrl, broadcastTime, videoTitle, adPayment });
   };
 
   return (
@@ -106,6 +117,19 @@ export default function AdminPanel({ broadcast, onClose }: AdminPanelProps) {
             value={videoTitle}
             onChange={(e) => setVideoTitle(e.target.value)}
             placeholder="Today's Advertisement"
+          />
+        </div>
+        
+        <div>
+          <Label htmlFor="adPayment">Ad Payment ($)</Label>
+          <Input
+            id="adPayment"
+            type="number"
+            min="0"
+            step="0.01"
+            value={adPayment}
+            onChange={(e) => setAdPayment(e.target.value)}
+            placeholder="1000"
           />
         </div>
         

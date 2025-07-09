@@ -23,7 +23,11 @@ export class MemStorage implements IStorage {
 
   async setBroadcast(insertBroadcast: InsertBroadcast): Promise<Broadcast> {
     const id = this.currentId++;
-    const broadcast: Broadcast = { ...insertBroadcast, id };
+    const broadcast: Broadcast = { 
+      ...insertBroadcast, 
+      id,
+      adPayment: insertBroadcast.adPayment || "1000"
+    };
     this.broadcasts.set(broadcast.date, broadcast);
     return broadcast;
   }

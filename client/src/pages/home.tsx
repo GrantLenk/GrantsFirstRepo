@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import AdminPanel from "@/components/admin-panel";
 import CountdownTimer from "@/components/countdown-timer";
 import VideoPlayer from "@/components/video-player";
+import RevenuePieChart from "@/components/revenue-pie-chart";
 import type { Broadcast } from "@shared/schema";
 
 export default function Home() {
@@ -143,6 +144,14 @@ export default function Home() {
               isPlaying={broadcastState === 'playing'}
               onVideoEnd={handleVideoEnd}
             />
+
+            {/* Revenue Distribution Chart */}
+            <div className="mt-8">
+              <RevenuePieChart 
+                adPayment={parseInt(broadcast.adPayment || "1000")} 
+                estimatedViewers={1250}
+              />
+            </div>
           </>
         )}
 
