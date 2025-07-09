@@ -24,12 +24,19 @@ export default function Home() {
       const [hours, minutes] = broadcast.broadcastTime.split(':').map(Number);
       const broadcastTime = new Date(today.getTime() + hours * 60 * 60 * 1000 + minutes * 60 * 1000);
       
+      console.log('Broadcast found:', broadcast);
+      console.log('Current time:', now);
+      console.log('Broadcast time:', broadcastTime);
+      
       if (now >= broadcastTime) {
+        console.log('Setting state to ended');
         setBroadcastState('ended');
       } else {
+        console.log('Setting state to waiting');
         setBroadcastState('waiting');
       }
     } else {
+      console.log('No broadcast found, setting state to none');
       setBroadcastState('none');
     }
   }, [broadcast]);
