@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Settings } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import AdminPanel from "@/components/admin-panel";
@@ -15,6 +15,24 @@ export default function Home() {
     queryKey: ['/api/broadcast/today'],
     refetchInterval: 30000, // Refetch every 30 seconds
   });
+
+  // Initialize broadcast state based on current time and broadcast time
+  useEffect(() => {
+    if (broadcast) {
+      const now = new Date();
+      const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+      const [hours, minutes] = broadcast.broadcastTime.split(':').map(Number);
+      const broadcastTime = new Date(today.getTime() + hours * 60 * 60 * 1000 + minutes * 60 * 1000);
+      
+      if (now >= broadcastTime) {
+        setBroadcastState('ended');
+      } else {
+        setBroadcastState('waiting');
+      }
+    } else {
+      setBroadcastState('none');
+    }
+  }, [broadcast]);
 
   const handleCountdownComplete = () => {
     setBroadcastState('playing');
