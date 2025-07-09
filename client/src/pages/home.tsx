@@ -137,9 +137,9 @@ export default function Home() {
             </div>
 
             {/* Ad Player and Revenue Chart Container */}
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-              {/* Ad Player Container - Takes up 2/3 width */}
-              <div className="lg:col-span-2">
+            <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+              {/* Ad Player Container - Takes up 3/4 width */}
+              <div className="lg:col-span-3">
                 <VideoPlayer
                   videoUrl={broadcast.videoUrl}
                   videoTitle={broadcast.videoTitle}
@@ -149,7 +149,7 @@ export default function Home() {
                 />
               </div>
 
-              {/* Revenue Distribution Chart - Takes up 1/3 width */}
+              {/* Revenue Distribution Chart - Takes up 1/4 width */}
               <div className="lg:col-span-1">
                 <RevenuePieChart 
                   adPayment={parseInt(broadcast.adPayment || "1000")} 
