@@ -136,21 +136,26 @@ export default function Home() {
               )}
             </div>
 
-            {/* Ad Player Container */}
-            <VideoPlayer
-              videoUrl={broadcast.videoUrl}
-              videoTitle={broadcast.videoTitle}
-              broadcastTime={broadcast.broadcastTime}
-              isPlaying={broadcastState === 'playing'}
-              onVideoEnd={handleVideoEnd}
-            />
+            {/* Ad Player and Revenue Chart Container */}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              {/* Ad Player Container - Takes up 2/3 width */}
+              <div className="lg:col-span-2">
+                <VideoPlayer
+                  videoUrl={broadcast.videoUrl}
+                  videoTitle={broadcast.videoTitle}
+                  broadcastTime={broadcast.broadcastTime}
+                  isPlaying={broadcastState === 'playing'}
+                  onVideoEnd={handleVideoEnd}
+                />
+              </div>
 
-            {/* Revenue Distribution Chart */}
-            <div className="mt-8">
-              <RevenuePieChart 
-                adPayment={parseInt(broadcast.adPayment || "1000")} 
-                estimatedViewers={1250}
-              />
+              {/* Revenue Distribution Chart - Takes up 1/3 width */}
+              <div className="lg:col-span-1">
+                <RevenuePieChart 
+                  adPayment={parseInt(broadcast.adPayment || "1000")} 
+                  estimatedViewers={1250}
+                />
+              </div>
             </div>
           </>
         )}

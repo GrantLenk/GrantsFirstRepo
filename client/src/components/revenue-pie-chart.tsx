@@ -39,16 +39,16 @@ export default function RevenuePieChart({ adPayment, estimatedViewers }: Revenue
 
   return (
     <Card className="w-full">
-      <CardHeader>
-        <CardTitle className="text-lg font-semibold text-center">
-          Daily Ad Revenue Distribution
+      <CardHeader className="pb-3">
+        <CardTitle className="text-base font-semibold text-center">
+          Ad Revenue Distribution
         </CardTitle>
-        <div className="text-center text-sm text-gray-600">
-          Total Ad Payment: <span className="font-bold text-green-600">${adPayment}</span>
+        <div className="text-center text-xs text-gray-600">
+          Total: <span className="font-bold text-green-600">${adPayment}</span>
         </div>
       </CardHeader>
-      <CardContent>
-        <div className="h-64">
+      <CardContent className="pt-0">
+        <div className="h-48">
           <ResponsiveContainer width="100%" height="100%">
             <PieChart>
               <Pie
@@ -56,8 +56,8 @@ export default function RevenuePieChart({ adPayment, estimatedViewers }: Revenue
                 cx="50%"
                 cy="50%"
                 labelLine={false}
-                label={({ name, percent }) => `${name} ${(percent * 100).toFixed(1)}%`}
-                outerRadius={80}
+                label={({ percent }) => `${(percent * 100).toFixed(0)}%`}
+                outerRadius={60}
                 fill="#8884d8"
                 dataKey="value"
               >
@@ -70,30 +70,36 @@ export default function RevenuePieChart({ adPayment, estimatedViewers }: Revenue
           </ResponsiveContainer>
         </div>
         
-        <div className="mt-4 space-y-2">
-          <div className="flex justify-between items-center p-2 bg-blue-50 rounded">
-            <span className="text-sm font-medium">Estimated Viewers:</span>
+        <div className="mt-3 space-y-2">
+          <div className="flex justify-between items-center p-2 bg-blue-50 rounded text-xs">
+            <span className="font-medium">Viewers:</span>
             <span className="font-bold">{estimatedViewers.toLocaleString()}</span>
           </div>
-          <div className="flex justify-between items-center p-2 bg-green-50 rounded">
-            <span className="text-sm font-medium">Reward per User:</span>
+          <div className="flex justify-between items-center p-2 bg-green-50 rounded text-xs">
+            <span className="font-medium">Per User:</span>
             <span className="font-bold text-green-600">${rewardPerUser.toFixed(4)}</span>
           </div>
-          <div className="grid grid-cols-3 gap-2 text-xs mt-3">
-            <div className="text-center">
-              <div className="w-3 h-3 bg-blue-500 rounded mx-auto mb-1"></div>
-              <div className="font-medium">User Rewards</div>
-              <div className="text-green-600">${userRewards.toFixed(2)}</div>
+          <div className="space-y-1 text-xs mt-2">
+            <div className="flex justify-between items-center">
+              <div className="flex items-center">
+                <div className="w-2 h-2 bg-blue-500 rounded mr-2"></div>
+                <span>User Rewards</span>
+              </div>
+              <span className="text-green-600 font-medium">${userRewards.toFixed(0)}</span>
             </div>
-            <div className="text-center">
-              <div className="w-3 h-3 bg-red-500 rounded mx-auto mb-1"></div>
-              <div className="font-medium">Platform Fee</div>
-              <div className="text-red-600">${platformFee.toFixed(2)}</div>
+            <div className="flex justify-between items-center">
+              <div className="flex items-center">
+                <div className="w-2 h-2 bg-red-500 rounded mr-2"></div>
+                <span>Platform Fee</span>
+              </div>
+              <span className="text-red-600 font-medium">${platformFee.toFixed(0)}</span>
             </div>
-            <div className="text-center">
-              <div className="w-3 h-3 bg-yellow-500 rounded mx-auto mb-1"></div>
-              <div className="font-medium">Operating Costs</div>
-              <div className="text-yellow-600">${operatingCosts.toFixed(2)}</div>
+            <div className="flex justify-between items-center">
+              <div className="flex items-center">
+                <div className="w-2 h-2 bg-yellow-500 rounded mr-2"></div>
+                <span>Operating</span>
+              </div>
+              <span className="text-yellow-600 font-medium">${operatingCosts.toFixed(0)}</span>
             </div>
           </div>
         </div>
