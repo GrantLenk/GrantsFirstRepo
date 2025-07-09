@@ -48,7 +48,7 @@ export default function RevenuePieChart({ adPayment, estimatedViewers }: Revenue
         </div>
       </CardHeader>
       <CardContent className="pt-0">
-        <div className="h-48">
+        <div className="h-44">
           <ResponsiveContainer width="100%" height="100%">
             <PieChart>
               <Pie
@@ -56,7 +56,6 @@ export default function RevenuePieChart({ adPayment, estimatedViewers }: Revenue
                 cx="50%"
                 cy="50%"
                 labelLine={false}
-                label={({ percent }) => `${(percent * 100).toFixed(0)}%`}
                 outerRadius={60}
                 fill="#8884d8"
                 dataKey="value"
@@ -83,21 +82,21 @@ export default function RevenuePieChart({ adPayment, estimatedViewers }: Revenue
             <div className="flex justify-between items-center">
               <div className="flex items-center">
                 <div className="w-2 h-2 bg-blue-500 rounded mr-2"></div>
-                <span>User Rewards</span>
+                <span>User Rewards (75%)</span>
               </div>
               <span className="text-green-600 font-medium">${userRewards.toFixed(0)}</span>
             </div>
             <div className="flex justify-between items-center">
               <div className="flex items-center">
                 <div className="w-2 h-2 bg-red-500 rounded mr-2"></div>
-                <span>Platform Fee</span>
+                <span>Platform Fee (15%)</span>
               </div>
               <span className="text-red-600 font-medium">${platformFee.toFixed(0)}</span>
             </div>
             <div className="flex justify-between items-center">
               <div className="flex items-center">
                 <div className="w-2 h-2 bg-yellow-500 rounded mr-2"></div>
-                <span>Operating</span>
+                <span>Operating (10%)</span>
               </div>
               <span className="text-yellow-600 font-medium">${operatingCosts.toFixed(0)}</span>
             </div>
