@@ -30,7 +30,7 @@ export default function AdminPanel({ broadcast, onClose }: AdminPanelProps) {
     onSuccess: () => {
       toast({
         title: "Success",
-        description: "Broadcast settings saved successfully",
+        description: "Ad settings saved successfully",
       });
       queryClient.invalidateQueries({ queryKey: ['/api/broadcast/today'] });
       onClose();
@@ -38,7 +38,7 @@ export default function AdminPanel({ broadcast, onClose }: AdminPanelProps) {
     onError: (error) => {
       toast({
         title: "Error",
-        description: error.message || "Failed to save broadcast settings",
+        description: error.message || "Failed to save ad settings",
         variant: "destructive",
       });
     },
@@ -59,7 +59,7 @@ export default function AdminPanel({ broadcast, onClose }: AdminPanelProps) {
     } catch {
       toast({
         title: "Error",
-        description: "Please enter a valid video URL",
+        description: "Please enter a valid ad video URL",
         variant: "destructive",
       });
       return;
@@ -78,18 +78,18 @@ export default function AdminPanel({ broadcast, onClose }: AdminPanelProps) {
       </CardHeader>
       <CardContent className="space-y-4">
         <div>
-          <Label htmlFor="videoUrl">Video URL</Label>
+          <Label htmlFor="videoUrl">Ad Video URL</Label>
           <Input
             id="videoUrl"
             type="url"
             value={videoUrl}
             onChange={(e) => setVideoUrl(e.target.value)}
-            placeholder="https://example.com/video.mp4"
+            placeholder="https://example.com/ad-video.mp4"
           />
         </div>
         
         <div>
-          <Label htmlFor="broadcastTime">Broadcast Time</Label>
+          <Label htmlFor="broadcastTime">Ad Display Time</Label>
           <Input
             id="broadcastTime"
             type="time"
@@ -99,13 +99,13 @@ export default function AdminPanel({ broadcast, onClose }: AdminPanelProps) {
         </div>
         
         <div>
-          <Label htmlFor="videoTitle">Video Title</Label>
+          <Label htmlFor="videoTitle">Ad Title</Label>
           <Input
             id="videoTitle"
             type="text"
             value={videoTitle}
             onChange={(e) => setVideoTitle(e.target.value)}
-            placeholder="Today's Featured Video"
+            placeholder="Today's Advertisement"
           />
         </div>
         

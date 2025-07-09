@@ -59,30 +59,30 @@ export default function Home() {
       <div className="container mx-auto px-4 py-8 max-w-4xl">
         {/* Header */}
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-slate-800 mb-2">Daily Video Broadcast</h1>
-          <p className="text-slate-600 text-lg">Experience something new every day</p>
+          <h1 className="text-4xl font-bold text-slate-800 mb-2">Daily Ad Display</h1>
+          <p className="text-slate-600 text-lg">Your scheduled advertisement will appear here</p>
         </div>
 
         {!broadcast ? (
-          /* No Video Scheduled State */
+          /* No Ad Scheduled State */
           <div className="bg-white rounded-xl shadow-lg p-8 text-center">
             <div className="mb-6">
-              <div className="text-4xl text-slate-400 mb-4">📅</div>
-              <h3 className="text-xl font-semibold text-slate-800 mb-2">No broadcast scheduled</h3>
-              <p className="text-slate-600">Check back tomorrow for the next daily video</p>
+              <div className="text-4xl text-slate-400 mb-4">📺</div>
+              <h3 className="text-xl font-semibold text-slate-800 mb-2">No ad scheduled</h3>
+              <p className="text-slate-600">Use the admin panel to schedule today's advertisement</p>
             </div>
           </div>
         ) : broadcastState === 'ended' ? (
-          /* Post-Broadcast State */
+          /* Post-Ad State */
           <div className="bg-white rounded-xl shadow-lg p-8 text-center">
             <div className="mb-6">
               <div className="text-4xl text-emerald-500 mb-4">✅</div>
-              <h3 className="text-xl font-semibold text-slate-800 mb-2">Today's broadcast has ended</h3>
-              <p className="text-slate-600">Thanks for watching! Come back tomorrow for the next video</p>
+              <h3 className="text-xl font-semibold text-slate-800 mb-2">Today's ad has finished</h3>
+              <p className="text-slate-600">Advertisement completed successfully</p>
             </div>
             <div className="bg-slate-50 rounded-lg p-4 mt-4">
               <p className="text-sm text-slate-600">
-                ℹ️ Next broadcast: Tomorrow at {broadcast.broadcastTime}
+                ℹ️ Next ad: Tomorrow at {broadcast.broadcastTime}
               </p>
             </div>
           </div>
@@ -93,7 +93,7 @@ export default function Home() {
               <div className="flex items-center justify-center mb-2">
                 <div className="text-brand-500 mr-2">🕐</div>
                 <span className="text-brand-700 font-medium">
-                  {broadcastState === 'playing' ? 'Broadcasting now!' : 'Next broadcast in:'}
+                  {broadcastState === 'playing' ? 'Ad playing now!' : 'Next ad in:'}
                 </span>
               </div>
               
@@ -104,13 +104,13 @@ export default function Home() {
                     onComplete={handleCountdownComplete}
                   />
                   <p className="text-sm text-slate-600 mt-3">
-                    Today's broadcast: <span className="font-medium">{broadcast.videoTitle}</span>
+                    Today's ad: <span className="font-medium">{broadcast.videoTitle}</span>
                   </p>
                 </>
               )}
             </div>
 
-            {/* Video Player Container */}
+            {/* Ad Player Container */}
             <VideoPlayer
               videoUrl={broadcast.videoUrl}
               videoTitle={broadcast.videoTitle}
@@ -123,7 +123,7 @@ export default function Home() {
 
         {/* Footer */}
         <footer className="text-center text-slate-500 text-sm mt-12">
-          <p>Daily Video Broadcast © 2024</p>
+          <p>Daily Ad Display © 2024</p>
         </footer>
       </div>
     </div>

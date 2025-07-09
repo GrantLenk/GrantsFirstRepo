@@ -1,8 +1,8 @@
-# Broadcast Video Player Application
+# Daily Ad Display Application
 
 ## Overview
 
-This is a full-stack application built with React (frontend) and Express (backend) that allows users to schedule and watch daily video broadcasts. The application features a countdown timer, video player, and admin panel for managing broadcast settings.
+This is a full-stack application built with React (frontend) and Express (backend) that allows administrators to schedule and display daily video advertisements. The application features a countdown timer, video player, and admin panel for managing ad settings.
 
 ## User Preferences
 
@@ -27,31 +27,31 @@ Preferred communication style: Simple, everyday language.
 ### Database Schema
 - **broadcasts** table with fields:
   - id (serial primary key)
-  - videoUrl (text)
-  - broadcastTime (text in HH:MM format)
-  - videoTitle (text)
-  - date (text in YYYY-MM-DD format)
+  - videoUrl (text) - URL to the ad video
+  - broadcastTime (text in HH:MM format) - time to display ad
+  - videoTitle (text) - title of the advertisement
+  - date (text in YYYY-MM-DD format) - date for the ad
 
 ## Key Components
 
 ### Frontend Components
-- **Home Page**: Main interface with countdown timer and video player
-- **Admin Panel**: Form for setting broadcast details (video URL, time, title)
-- **Video Player**: Custom video player with countdown and playback controls
-- **Countdown Timer**: Real-time countdown to broadcast time
+- **Home Page**: Main interface with countdown timer and ad player
+- **Admin Panel**: Form for setting ad details (video URL, time, title)
+- **Video Player**: Custom video player with countdown and playback controls for ads
+- **Countdown Timer**: Real-time countdown to ad display time
 - **UI Components**: Complete shadcn/ui component library
 
 ### Backend Components
-- **Routes**: API endpoints for getting and setting broadcasts
+- **Routes**: API endpoints for getting and setting ad schedules
 - **Storage**: Memory-based storage implementation (MemStorage class)
 - **Database**: Drizzle ORM configuration for PostgreSQL
 
 ## Data Flow
 
-1. **Initial Load**: Frontend fetches today's broadcast data from `/api/broadcast/today`
-2. **Countdown**: Timer calculates time remaining until broadcast time
-3. **Video Playback**: When countdown reaches zero, video player starts
-4. **Admin Management**: Admin can update broadcast settings via `/api/broadcast` endpoint
+1. **Initial Load**: Frontend fetches today's ad data from `/api/broadcast/today`
+2. **Countdown**: Timer calculates time remaining until ad display time
+3. **Ad Playback**: When countdown reaches zero, ad video player starts
+4. **Admin Management**: Admin can update ad settings via `/api/broadcast` endpoint
 5. **Real-time Updates**: Frontend polls for updates every 30 seconds
 
 ## External Dependencies
@@ -90,3 +90,11 @@ Preferred communication style: Simple, everyday language.
 - Replit-specific plugins for development environment
 
 The application is designed to be deployed on Replit with PostgreSQL database provisioning. The current implementation uses in-memory storage but is structured to easily switch to the PostgreSQL database when needed.
+
+## Recent Changes
+
+- **2024-01-09**: Updated application focus from general video broadcasts to advertisement display
+  - Changed all user-facing text from "broadcast" to "ad" terminology
+  - Updated admin panel labels and messages
+  - Modified video player waiting state to reference advertisements
+  - Updated database schema comments to reflect ad focus

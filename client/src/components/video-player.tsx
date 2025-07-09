@@ -38,8 +38,8 @@ export default function VideoPlayer({
             <div className="mb-4">
               <Play className="h-16 w-16 text-slate-400 mx-auto mb-4" />
             </div>
-            <h3 className="text-xl font-semibold mb-2">Video will begin shortly</h3>
-            <p className="text-slate-300">Get ready for today's broadcast</p>
+            <h3 className="text-xl font-semibold mb-2">Advertisement will begin shortly</h3>
+            <p className="text-slate-300">Get ready for today's ad</p>
           </div>
         ) : (
           /* Video Element */
@@ -66,7 +66,7 @@ export default function VideoPlayer({
           </span>
           <span className="flex items-center">
             <Clock className="mr-1 h-4 w-4" />
-            Live broadcast
+            Scheduled ad
           </span>
           <span className="flex items-center">
             <Eye className="mr-1 h-4 w-4" />
