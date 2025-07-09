@@ -102,3 +102,7 @@ The application is designed to be deployed on Replit with PostgreSQL database pr
   - Added adPayment field to database schema with default value of $1000
   - Created RevenuePieChart component showing distribution: 75% user rewards, 15% platform fee, 10% operating costs
   - Updated admin panel to include ad payment amount input field
+  - Integrated crypto wallet connectivity for payouts using Web3/Ethereum
+  - Added WalletConnect component for MetaMask integration
+  - Created wallet and ad view tracking database tables
+  - Implemented reward claiming system tied to wallet addresses

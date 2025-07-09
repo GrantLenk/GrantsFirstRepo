@@ -6,6 +6,7 @@ import AdminPanel from "@/components/admin-panel";
 import CountdownTimer from "@/components/countdown-timer";
 import VideoPlayer from "@/components/video-player";
 import RevenuePieChart from "@/components/revenue-pie-chart";
+import WalletConnect from "@/components/wallet-connect";
 import type { Broadcast } from "@shared/schema";
 
 export default function Home() {
@@ -136,7 +137,7 @@ export default function Home() {
               )}
             </div>
 
-            {/* Ad Player and Revenue Chart Container */}
+            {/* Ad Player and Side Panel Container */}
             <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
               {/* Ad Player Container - Takes up 3/4 width */}
               <div className="lg:col-span-3">
@@ -149,11 +150,16 @@ export default function Home() {
                 />
               </div>
 
-              {/* Revenue Distribution Chart - Takes up 1/4 width */}
-              <div className="lg:col-span-1">
+              {/* Side Panel with Revenue Chart and Wallet */}
+              <div className="lg:col-span-1 space-y-4">
                 <RevenuePieChart 
                   adPayment={parseInt(broadcast.adPayment || "1000")} 
                   estimatedViewers={1250}
+                />
+                
+                <WalletConnect 
+                  userReward={parseInt(broadcast.adPayment || "1000") * 0.75 / 1250}
+                  isAdCompleted={broadcastState === 'ended'}
                 />
               </div>
             </div>
